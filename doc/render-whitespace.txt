@@ -1,0 +1,281 @@
+==========================INSTALLATION                                    *render-whitespace-installation*
+
+Using packer.nvim: >
+    use 'GTPV/render-whitespace.nvim'
+<
+
+Using lazy.nvim: >
+    {
+      'GTPV/render-whitespace.nvim',
+      config = function()
+        require('render-whitespace').setup()
+      end
+    }
+<
+
+Using vim-plug: >
+    Plug 'GTPV/render-whitespace.nvim'
+<====================================
+RENDER-WHITESPACE.NVIM                                    *render-whitespace*
+
+A Neovim plugin that renders whitespace characters in normal and visual modes
+with configurable options.
+
+================================================================================
+CONTENTS                                           *render-whitespace-contents*
+
+    1. Introduction ......................... |render-whitespace-introduction|
+    2. Installation ......................... |render-whitespace-installation|
+    3. Configuration ........................ |render-whitespace-configuration|
+    4. Usage ................................ |render-whitespace-usage|
+    5. API .................................. |render-whitespace-api|
+    6. Commands ............................. |render-whitespace-commands|
+    7. Highlight Groups ..................... |render-whitespace-highlights|
+
+================================================================================
+INTRODUCTION                                   *render-whitespace-introduction*
+
+render-whitespace.nvim is a plugin that visually renders whitespace characters
+such as spaces, tabs, newlines, and trailing spaces. It supports configurable
+rendering in different modes (normal, visual, insert) and allows customization
+of the characters used for rendering.
+
+================================================================================
+INSTALLATION                                   *render-whitespace-installation*
+
+Using packer.nvim: >
+    use 'GTPV/render-whitespace.nvim'
+<
+
+Using lazy.nvim: >
+    {
+      'GTPV/render-whitespace.nvim',
+      config = function()
+        require('render-whitespace').setup()
+      end
+    }
+<
+
+Using vim-plug: >
+    Plug 'GTPV/render-whitespace.nvim'
+<
+
+================================================================================
+CONFIGURATION                                 *render-whitespace-configuration*
+
+Default configuration: >
+    require('render-whitespace').setup({
+      chars = {
+        space = '·',           -- Character for spaces
+        tab = '↦',             -- Character for tabs
+        newline = '↲',         -- Character for newlines
+        trail = '•',           -- Character for trailing spaces
+      },
+      modes = {
+        normal = false,        -- Render in normal mode
+        visual = true,         -- Render in visual mode
+        insert = false,        -- Render in insert mode
+      },
+      enabled = true,          -- Enable/disable the plugin
+      highlight_group = 'Whitespace',  -- Highlight group for whitespace
+    })
+<
+
+                                               *render-whitespace-config-chars*
+chars~
+    A table defining which characters to use for rendering different types of
+    whitespace:
+    - space: Character for regular spaces (default: '·')
+    - tab: Character for tab characters (default: '↦')
+    - newline: Character for end-of-line (default: '↲')
+    - trail: Character for trailing spaces (default: '•')
+
+                                               *render-whitespace-config-modes*
+modes~
+    A table defining in which modes to render whitespace:
+    - normal: Render in normal mode (default: false)
+    - visual: Render in visual mode (default: true)
+    - insert: Render in insert mode (default: false)
+
+                                             *render-whitespace-config-enabled*
+enabled~
+    Boolean to enable/disable the plugin (default: true)
+
+                                      *render-whitespace-config-highlight-group*
+highlight_group~
+    Name of the highlight group to use for whitespace characters
+    (default: 'Whitespace')
+
+================================================================================
+USAGE                                                 *render-whitespace-usage*
+
+The plugin automatically renders whitespace characters based on your
+configuration. You can toggle the rendering on/off using the provided
+commands or API functions.
+
+================================================================================
+API                                                     *render-whitespace-api*
+
+                                                 *render-whitespace.setup()*
+setup({config})
+    Setup the plugin with the given configuration.
+    
+    Parameters: ~
+        {config} (table) Configuration table (see |render-whitespace-configuration|)
+
+                                                *render-whitespace.enable()*
+enable()
+    Enable whitespace rendering.
+
+                                               *render-whitespace.disable()*
+disable()
+    Disable whitespace rendering.
+
+                                                *render-whitespace.toggle()*
+toggle()
+    Toggle whitespace rendering on/off.
+
+                                            *render-whitespace.is_enabled()*
+is_enabled()
+    Check if whitespace rendering is currently enabled.
+    
+    Returns: ~
+        (boolean) true if enabled, false otherwise
+
+                                           *render-whitespace.toggle_mode()*
+toggle_mode({mode})
+    Toggle whitespace rendering for a specific mode.
+    
+    Parameters: ~
+        {mode} (string) The mode to toggle: 'normal', 'visual', or 'insert'
+    
+    Returns: ~
+        (boolean) true if mode is now enabled, false if disabled
+
+                                           *render-whitespace.enable_mode()*
+enable_mode({mode})
+    Enable whitespace rendering for a specific mode.
+    
+    Parameters: ~
+        {mode} (string) The mode to enable: 'normal', 'visual', or 'insert'
+
+                                          *render-whitespace.disable_mode()*
+disable_mode({mode})
+    Disable whitespace rendering for a specific mode.
+    
+    Parameters: ~
+        {mode} (string) The mode to disable: 'normal', 'visual', or 'insert'
+
+                                       *render-whitespace.is_mode_enabled()*
+is_mode_enabled({mode})
+    Check if whitespace rendering is enabled for a specific mode.
+    
+    Parameters: ~
+        {mode} (string) The mode to check: 'normal', 'visual', or 'insert'
+    
+    Returns: ~
+        (boolean) true if enabled for the mode, false otherwise
+
+                                            *render-whitespace.get_modes()*
+get_modes()
+    Get the current mode configuration.
+    
+    Returns: ~
+        (table) A copy of the current modes configuration
+
+                                           *render-whitespace.set_colors()*
+set_colors({colors})
+    Update whitespace colors dynamically.
+    
+    Parameters: ~
+        {colors} (table) Color configuration table with keys:
+                        - fg: Foreground color for whitespace
+                        - bg: Background color for whitespace
+                        - visual_fg: Foreground color in visual selection
+                        - visual_bg: Background color in visual selection
+
+                                           *render-whitespace.get_colors()*
+get_colors()
+    Get the current color configuration.
+    
+    Returns: ~
+        (table) A copy of the current colors configuration
+
+================================================================================
+COMMANDS                                           *render-whitespace-commands*
+
+                                              *:RenderWhitespaceToggle*
+:RenderWhitespaceToggle
+    Toggle whitespace rendering on/off.
+
+                                              *:RenderWhitespaceEnable*
+:RenderWhitespaceEnable
+    Enable whitespace rendering.
+
+                                             *:RenderWhitespaceDisable*
+:RenderWhitespaceDisable
+    Disable whitespace rendering.
+
+                                         *:RenderWhitespaceToggleNormal*
+:RenderWhitespaceToggleNormal
+    Toggle whitespace rendering in normal mode only.
+
+                                         *:RenderWhitespaceToggleVisual*
+:RenderWhitespaceToggleVisual
+    Toggle whitespace rendering in visual mode only.
+
+                                         *:RenderWhitespaceToggleInsert*
+:RenderWhitespaceToggleInsert
+    Toggle whitespace rendering in insert mode only.
+
+                                          *:RenderWhitespaceEnableNormal*
+:RenderWhitespaceEnableNormal
+    Enable whitespace rendering in normal mode.
+
+                                          *:RenderWhitespaceEnableVisual*
+:RenderWhitespaceEnableVisual
+    Enable whitespace rendering in visual mode.
+
+                                          *:RenderWhitespaceEnableInsert*
+:RenderWhitespaceEnableInsert
+    Enable whitespace rendering in insert mode.
+
+                                         *:RenderWhitespaceDisableNormal*
+:RenderWhitespaceDisableNormal
+    Disable whitespace rendering in normal mode.
+
+                                         *:RenderWhitespaceDisableVisual*
+:RenderWhitespaceDisableVisual
+    Disable whitespace rendering in visual mode.
+
+                                         *:RenderWhitespaceDisableInsert*
+:RenderWhitespaceDisableInsert
+    Disable whitespace rendering in insert mode.
+
+                                            *:RenderWhitespaceSetColors*
+:RenderWhitespaceSetColors {colors}
+    Set whitespace colors using key=value pairs.
+    
+    Example: >
+        :RenderWhitespaceSetColors fg=#ff0000 visual_fg=#00ff00
+<
+
+================================================================================
+HIGHLIGHT GROUPS                               *render-whitespace-highlights*
+
+                                                            *hl-Whitespace*
+Whitespace
+    Default highlight group for rendered whitespace characters.
+    
+    Default: links to Comment highlight group with reduced visibility.
+    
+    You can customize it: >
+        highlight Whitespace guifg=#555555 gui=nocombine
+<
+    
+    Or in Lua: >
+        vim.api.nvim_set_hl(0, 'Whitespace', { fg = '#555555', nocombine = true })
+<
+
+================================================================================
+vim:tw=78:ts=8:ft=help:norl:
