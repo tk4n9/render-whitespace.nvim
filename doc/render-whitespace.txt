@@ -1,21 +1,3 @@
-==========================INSTALLATION                                    *render-whitespace-installation*
-
-Using packer.nvim: >
-    use 'GTPV/render-whitespace.nvim'
-<
-
-Using lazy.nvim: >
-    {
-      'GTPV/render-whitespace.nvim',
-      config = function()
-        require('render-whitespace').setup()
-      end
-    }
-<
-
-Using vim-plug: >
-    Plug 'GTPV/render-whitespace.nvim'
-<====================================
 RENDER-WHITESPACE.NVIM                                    *render-whitespace*
 
 A Neovim plugin that renders whitespace characters in normal and visual modes
