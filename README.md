@@ -16,14 +16,14 @@ A Neovim plugin that renders whitespace characters with configurable options, pr
 ### Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```lua
-use 'GTPV/render-whitespace.nvim'
+use 'tk4n9/render-whitespace.nvim'
 ```
 
 ### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 {
-  'GTPV/render-whitespace.nvim',
+  'tk4n9/render-whitespace.nvim',
   config = function()
     require('render-whitespace').setup()
   end
@@ -33,7 +33,7 @@ use 'GTPV/render-whitespace.nvim'
 ### Using [vim-plug](https://github.com/junegunn/vim-plug)
 
 ```vim
-Plug 'GTPV/render-whitespace.nvim'
+Plug 'tk4n9/render-whitespace.nvim'
 ```
 
 ## Configuration
